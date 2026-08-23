@@ -186,59 +186,80 @@ document.addEventListener("DOMContentLoaded", () => {
       return el && el.value ? el.value : "neuvedeno";
     }
 
-    function buildParamsLines() {
+    function buildParamsFields() {
       const key = typeToParams[answers.typ] || "byt";
       if (key === "byt") {
-        return [
-          `Dispozice: ${fieldValue("#wBytDispozice")}`,
-          `Užitná plocha: ${fieldValue("#wBytPlocha")} m²`,
-          `Vlastnictví: ${fieldValue("#wBytVlastnictvi")}`,
-          `Stavba: ${fieldValue("#wBytStavba")}`,
-          `Patro: ${fieldValue("#wBytPatro")}`,
-        ];
+        return {
+          Dispozice: fieldValue("#wBytDispozice"),
+          "Užitná plocha": `${fieldValue("#wBytPlocha")} m²`,
+          Vlastnictví: fieldValue("#wBytVlastnictvi"),
+          Stavba: fieldValue("#wBytStavba"),
+          Patro: fieldValue("#wBytPatro"),
+        };
       }
       if (key === "dum") {
-        return [
-          `Velikost: ${fieldValue("#wDumVelikost")}`,
-          `Užitná plocha: ${fieldValue("#wDumPlocha")} m²`,
-          `Plocha pozemku: ${fieldValue("#wDumPozemek")} m²`,
-        ];
+        return {
+          Velikost: fieldValue("#wDumVelikost"),
+          "Užitná plocha": `${fieldValue("#wDumPlocha")} m²`,
+          "Plocha pozemku": `${fieldValue("#wDumPozemek")} m²`,
+        };
       }
       if (key === "pozemek") {
-        return [
-          `Druh pozemku: ${fieldValue("#wPozemekDruh")}`,
-          `Plocha pozemku: ${fieldValue("#wPozemekPlocha")} m²`,
-        ];
+        return {
+          "Druh pozemku": fieldValue("#wPozemekDruh"),
+          "Plocha pozemku": `${fieldValue("#wPozemekPlocha")} m²`,
+        };
       }
-      return [
-        `Užitná plocha: ${fieldValue("#wOstatniPlocha")} m²`,
-        `Plocha pozemku: ${fieldValue("#wOstatniPozemek")} m²`,
-      ];
+      return {
+        "Užitná plocha": `${fieldValue("#wOstatniPlocha")} m²`,
+        "Plocha pozemku": `${fieldValue("#wOstatniPozemek")} m²`,
+      };
     }
 
-    nextBtn.addEventListener("click", () => {
+    const successTitle = wizard.querySelector('[data-step="success"] h3');
+    const successText = wizard.querySelector('[data-step="success"] p');
+
+    function showSubmitError() {
+      successTitle.textContent = "Poptávku se nepodařilo odeslat automaticky.";
+      successText.innerHTML =
+        'Napište mi prosím přímo na <a href="mailto:romana@romanareality.cz">romana@romanareality.cz</a> nebo zavolejte na <a href="tel:+420720347693">+420 720 347 693</a>.';
+      showStep("success");
+    }
+
+    nextBtn.addEventListener("click", async () => {
       if (current < totalSteps) {
         current += 1;
         showStep(current);
         return;
       }
 
-      const body = [
-        `Jméno: ${fieldValue("#wName")}`,
-        `Telefon: ${fieldValue("#wPhone")}`,
-        `E-mail: ${fieldValue("#wEmail")}`,
-        `Typ nemovitosti: ${answers.typ || "neuvedeno"}`,
-        `Lokalita: ${fieldValue("#wLocation")}`,
-        ...buildParamsLines(),
-        `Cíl: ${answers.cil || "neuvedeno"}`,
-      ].join("\n");
+      const payload = {
+        _subject: "Poptávka: orientační ocenění nemovitosti",
+        Jméno: fieldValue("#wName"),
+        Telefon: fieldValue("#wPhone"),
+        "E-mail": fieldValue("#wEmail"),
+        "Typ nemovitosti": answers.typ || "neuvedeno",
+        Lokalita: fieldValue("#wLocation"),
+        ...buildParamsFields(),
+        Cíl: answers.cil || "neuvedeno",
+      };
 
-      const mailto = `mailto:romana@romanareality.cz?subject=${encodeURIComponent(
-        "Poptávka: orientační ocenění nemovitosti"
-      )}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailto;
+      nextBtn.disabled = true;
+      nextBtn.innerHTML = "Odesílám…";
 
-      showStep("success");
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/romana@romanareality.cz", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error("Odeslání se nezdařilo");
+        showStep("success");
+      } catch (err) {
+        showSubmitError();
+      } finally {
+        nextBtn.disabled = false;
+      }
     });
 
     showStep(1);
