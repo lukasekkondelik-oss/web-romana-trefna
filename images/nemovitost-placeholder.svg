@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 768" role="img" aria-label="Fotografie nemovitosti bude doplněna">
+  <rect width="1024" height="768" fill="#f8f4e9"/>
+  <path d="M120 620 L512 220 L680 380 L680 300 L780 300 L780 460 L904 580" stroke="#b0913f" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="512" cy="330" r="20" stroke="#b0913f" stroke-width="10" fill="none"/>
+  <text x="512" y="700" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="28" fill="#8a7a5c">Fotografie bude doplněna</text>
+</svg>

@@ -1,0 +1,109 @@
+name: Urbium sync
+
+# Rollout note: the schedule trigger is intentionally left commented out
+# below. Run this workflow manually (workflow_dispatch) against the real
+# Urbium feed first, verify scripts/lib/xml-schema.mjs maps the real XML
+# fields correctly (see docs/urbium-sync.md), and do at least one run with
+# mode=pr reviewed by a human before enabling the schedule.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "direct = commit straight to main, pr = open a pull request for review"
+        required: false
+        default: "direct"
+        type: choice
+        options:
+          - direct
+          - pr
+      debug_schema:
+        description: "Log the first raw list/detail entry (for verifying Urbium's XML field names)"
+        required: false
+        default: false
+        type: boolean
+  # schedule:
+  #   - cron: "0 6,12,18 * * *"
+
+concurrency:
+  group: urbium-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Urbium sync
+        env:
+          URBIUM_USERNAME: ${{ secrets.URBIUM_USERNAME }}
+          URBIUM_PASSWORD: ${{ secrets.URBIUM_PASSWORD }}
+          DEBUG_SCHEMA: ${{ inputs.debug_schema }}
+        run: npm run sync
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Summarize changes
+        if: steps.changes.outputs.changed == 'true'
+        id: summary
+        run: |
+          {
+            echo "message<<EOF"
+            echo "chore(urbium-sync): update property listings"
+            echo ""
+            git status --porcelain
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Configure git identity
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push directly to main
+        if: steps.changes.outputs.changed == 'true' && inputs.mode != 'pr'
+        run: |
+          git add data/urbium-properties.json images/nemovitosti index.html sitemap.xml nemovitost-*.html
+          git commit -m "${{ steps.summary.outputs.message }}"
+          git push
+
+      - name: Open pull request for review
+        if: steps.changes.outputs.changed == 'true' && inputs.mode == 'pr'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: ${{ steps.summary.outputs.message }}
+          branch: urbium-sync/review
+          title: "Urbium sync: review generated listings"
+          body: |
+            Automated Urbium sync run in review mode. Please check the generated
+            property page(s), downloaded images, and the index.html/sitemap.xml
+            diffs before merging.
+          add-paths: |
+            data/urbium-properties.json
+            images/nemovitosti
+            index.html
+            sitemap.xml
+            nemovitost-*.html

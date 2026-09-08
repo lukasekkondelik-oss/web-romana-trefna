@@ -35,6 +35,10 @@
   color: #fff;
 }
 
+.property-badge--status.is-sold {
+  background: var(--ink-soft);
+}
+
 .property-top {
   display: grid;
   grid-template-columns: 1fr 1fr;
