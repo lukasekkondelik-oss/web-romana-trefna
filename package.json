@@ -1,0 +1,14 @@
+{
+  "name": "romanareality-urbium-sync",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "sync": "node scripts/sync-urbium.mjs"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.11.1"
+  }
+}
