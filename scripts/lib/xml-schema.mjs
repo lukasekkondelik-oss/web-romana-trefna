@@ -99,38 +99,79 @@ function parseVideos(raw) {
     }));
 }
 
+// The detail endpoint (confirmed against the real feed) does NOT use fixed
+// named elements like the list endpoint — instead each property is a
+// <property><column name="..." description="...">...</column>...</property>
+// generic name/value list. Build a name -> value lookup from it.
+function locatePropertyNode(parsedDoc) {
+  const root = pick(parsedDoc, ["properties", "status", "property", "nemovitost", "data"]) ?? parsedDoc;
+  let propertyNode = pick(root, ["property", "nemovitost", "data"]) ?? root;
+  if (Array.isArray(propertyNode)) propertyNode = propertyNode[0];
+  return propertyNode;
+}
+
+function buildColumnMap(propertyNode) {
+  const columns = toArray(propertyNode?.column);
+  const map = {};
+  for (const col of columns) {
+    const name = col?.["@_name"];
+    if (!name) continue;
+    const textVal = col?.column_text_value;
+    const itemVal = col?.column_item_value;
+    const hasText = textVal !== undefined && textVal !== null && textVal !== "";
+    map[name] = { value: hasText ? textVal : itemVal, description: col?.["@_description"] };
+  }
+  return map;
+}
+
+/**
+ * For diagnosing the real feed: returns every column's name/description and
+ * whether it carries a value, without dumping (potentially huge) text
+ * values into the log.
+ */
+export function summarizeDetailColumns(parsedDoc) {
+  const propertyNode = locatePropertyNode(parsedDoc);
+  return toArray(propertyNode?.column).map((c) => ({
+    name: c?.["@_name"],
+    description: c?.["@_description"],
+    hasValue: Boolean(c?.column_text_value) || (c?.column_item_value !== undefined && c?.column_item_value !== ""),
+  }));
+}
+
 /**
  * Normalizes one detail-endpoint document into the property shape stored in
  * data/urbium-properties.json (see docs/urbium-sync.md for the full shape).
+ * `knownPropertyId` is the ID we already have from the list endpoint — used
+ * as a fallback since the detail payload's own ID field is unconfirmed.
  */
-export function mapDetailEntry(parsedDoc) {
-  // The list endpoint turned out to wrap everything under a "status" element
-  // (see extractListEntries) — try that first, then fall back to a bare
-  // "property" node in case the detail endpoint isn't wrapped the same way.
-  let raw = pick(parsedDoc, ["status", "property", "nemovitost", "data"]) ?? parsedDoc;
-  // If we landed on a status/wrapper object rather than the property itself,
-  // drill one level further into its nested property node.
-  if (raw && typeof raw === "object" && !Array.isArray(raw) && !("id" in raw) && !("property_id" in raw)) {
-    raw = pick(raw, ["property", "nemovitost", "data"]) ?? raw;
-  }
-  // The list/detail parser forces repeating tag names into arrays even when
-  // the detail endpoint returns a single node — unwrap that here.
-  if (Array.isArray(raw)) raw = raw[0];
+export function mapDetailEntry(parsedDoc, knownPropertyId) {
+  const propertyNode = locatePropertyNode(parsedDoc);
+  const columns = buildColumnMap(propertyNode);
 
-  const propertyId = text(pick(raw, ["id", "property_id", "propertyId", "ID"]));
-  const status = text(pick(raw, ["stav", "status", "state"])) || "unknown";
+  function field(...names) {
+    for (const name of names) {
+      const col = columns[name];
+      if (col && col.value !== undefined && col.value !== "") return text(col.value);
+    }
+    return text(pick(propertyNode, names));
+  }
+
+  const propertyId = field("id", "property_id", "propertyId") || text(knownPropertyId);
+  const status = field("stav", "status", "state") || "unknown";
   const lastModified = normalizeTimestamp(
-    text(pick(raw, ["datum_modifikace", "last_modified", "modified", "date_modified", "datum_zmeny", "lastModified", "modification_date"]))
+    field("datum_modifikace", "last_modified", "modified", "date_modified", "datum_zmeny", "lastModified", "modification_date")
   );
 
-  const title = text(pick(raw, ["nazev", "title", "name", "predmet"])) || "Nemovitost";
-  const description = text(pick(raw, ["popis", "description", "text"])) || "";
-  const location = text(pick(raw, ["lokalita", "location", "obec", "city"])) || "";
-  const address = text(pick(raw, ["adresa", "address", "street", "ulice"])) || location;
-  const areaRaw = text(pick(raw, ["plocha", "uzitna_plocha", "area", "usable_area"]));
+  // "popisz" (title) and "popis" (description) confirmed from the real feed.
+  const title = field("popisz", "nazev", "title", "name", "predmet") || "Nemovitost";
+  const description = field("popis", "description", "text") || "";
+  const location = field("lokalita", "obec", "mesto", "location", "city") || "";
+  const address = field("adresa", "ulice", "address", "street") || location;
+  const areaRaw = field("plocha", "uzitna_plocha", "plocha_uzitna", "area", "usable_area");
   const area = areaRaw ? Number(String(areaRaw).replace(/[^\d.]/g, "")) || null : null;
-  const layout = text(pick(raw, ["dispozice", "layout", "disposition"])) || "";
-  const propertyType = text(pick(raw, ["typ", "type", "kategorie", "category"])) || "";
+  const layout = field("dispozice", "layout", "disposition") || "";
+  // "typ_nemovitosti_u" (refined type, e.g. "Rodinný dům") confirmed from the real feed.
+  const propertyType = field("typ_nemovitosti_u", "typ_nemovitosti", "typ", "type", "kategorie", "category") || "";
 
   return {
     propertyId,
@@ -143,8 +184,8 @@ export function mapDetailEntry(parsedDoc) {
     area,
     layout,
     propertyType,
-    ...parsePrice(raw),
-    images: parseImages(raw),
-    videos: parseVideos(raw),
+    ...parsePrice({ cena: field("cena", "cena_czk", "price_czk", "price") }),
+    images: parseImages(propertyNode),
+    videos: parseVideos(propertyNode),
   };
 }

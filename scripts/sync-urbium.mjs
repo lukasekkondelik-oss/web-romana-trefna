@@ -3,7 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 
 import { fetchList, fetchDetail } from "./lib/urbium-client.mjs";
-import { extractListEntries, mapDetailEntry } from "./lib/xml-schema.mjs";
+import { extractListEntries, mapDetailEntry, summarizeDetailColumns } from "./lib/xml-schema.mjs";
 import { loadState, saveStateAtomic } from "./lib/state.mjs";
 import { buildActionQueue } from "./lib/diff.mjs";
 import { generateSlugAndPaths } from "./lib/slug.mjs";
@@ -33,7 +33,7 @@ async function processInsertOrUpdate(state, action) {
   const existing = state.properties[action.propertyId];
 
   const detailDoc = await fetchDetail(action.propertyId);
-  const normalized = mapDetailEntry(detailDoc);
+  const normalized = mapDetailEntry(detailDoc, action.propertyId);
   if (!normalized.propertyId) {
     throw new Error(`Detail response for property ${action.propertyId} is missing a property id — skipping`);
   }
@@ -106,9 +106,15 @@ async function run() {
     console.log("DEBUG_SCHEMA: first normalized list entry —", JSON.stringify(listEntries[0]));
     if (listEntries[0]) {
       const debugDetailDoc = await fetchDetail(listEntries[0].propertyId);
-      console.log("DEBUG_SCHEMA: raw parsed detail document for first property —");
-      console.log(JSON.stringify(debugDetailDoc, null, 2).slice(0, 4000));
-      console.log("DEBUG_SCHEMA: first normalized detail entry —", JSON.stringify(mapDetailEntry(debugDetailDoc)));
+      // The detail endpoint uses a generic name/value "column" list, and
+      // some values (e.g. the description) can be several KB of text — dump
+      // just the name/description/has-value catalog so nothing gets cut off.
+      console.log("DEBUG_SCHEMA: detail column catalog for first property —");
+      console.log(JSON.stringify(summarizeDetailColumns(debugDetailDoc), null, 2));
+      console.log(
+        "DEBUG_SCHEMA: first normalized detail entry —",
+        JSON.stringify(mapDetailEntry(debugDetailDoc, listEntries[0].propertyId))
+      );
     }
   }
 
