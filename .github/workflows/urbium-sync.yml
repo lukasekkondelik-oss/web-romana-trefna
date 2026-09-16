@@ -9,17 +9,17 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "direct = commit straight to main, pr = open a pull request for review"
+        description: "direct = commit straight to main, pr = open a pull request for review (default while schema is still being confirmed)"
         required: false
-        default: "direct"
+        default: "pr"
         type: choice
         options:
           - direct
           - pr
       debug_schema:
-        description: "Log the first raw list/detail entry (for verifying Urbium's XML field names)"
+        description: "Log the first raw list/detail entry (for verifying Urbium's XML field names) — defaults on while schema is still being confirmed"
         required: false
-        default: false
+        default: true
         type: boolean
   # schedule:
   #   - cron: "0 6,12,18 * * *"

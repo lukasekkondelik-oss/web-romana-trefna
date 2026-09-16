@@ -78,11 +78,25 @@ function parsePrice(raw) {
   return { price: numeric, priceDisplay: `${numeric.toLocaleString("cs-CZ")} Kč` };
 }
 
+// Recursively hunts for a plausible URL string inside a parsed XML node,
+// however many levels it turns out to be nested — never returns a
+// stringified object (e.g. "[object Object]"), just undefined if nothing
+// URL-shaped is found, so callers can silently skip it.
+function extractUrlLike(item, depth = 0) {
+  if (typeof item === "string") {
+    const trimmed = item.trim();
+    return /^https?:\/\//i.test(trimmed) ? trimmed : undefined;
+  }
+  if (depth > 3 || !item || typeof item !== "object") return undefined;
+  const candidate = item.url ?? item["@_url"] ?? item["#text"] ?? item.src ?? item.velky ?? item.original ?? item.big;
+  return extractUrlLike(candidate, depth + 1);
+}
+
 function parseImages(raw) {
   const photosNode = pick(raw, ["fotografie", "obrazky", "photos", "images", "gallery"]);
   const photoItems = toArray(pick(photosNode, ["foto", "photo", "image", "item"]) ?? photosNode);
   return photoItems
-    .map((item) => text(item?.url ?? item?.["@_url"] ?? item))
+    .map((item) => extractUrlLike(item))
     .filter(Boolean)
     .map((sourceUrl) => ({ sourceUrl }));
 }
@@ -91,7 +105,7 @@ function parseVideos(raw) {
   const videosNode = pick(raw, ["videa", "videos", "video"]);
   const videoItems = toArray(videosNode);
   return videoItems
-    .map((item) => text(item?.url ?? item?.["@_url"] ?? item))
+    .map((item) => extractUrlLike(item))
     .filter(Boolean)
     .map((sourceUrl) => ({
       sourceUrl,
@@ -131,11 +145,22 @@ function buildColumnMap(propertyNode) {
  */
 export function summarizeDetailColumns(parsedDoc) {
   const propertyNode = locatePropertyNode(parsedDoc);
-  return toArray(propertyNode?.column).map((c) => ({
+  const columns = toArray(propertyNode?.column).map((c) => ({
     name: c?.["@_name"],
     description: c?.["@_description"],
     hasValue: Boolean(c?.column_text_value) || (c?.column_item_value !== undefined && c?.column_item_value !== ""),
   }));
+
+  // Fields like photos/videos/id/modification-date turned out NOT to be
+  // <column> entries but siblings of it — list every other key on the
+  // property node (with a short value preview) so those can be found too.
+  const siblingKeys = Object.keys(propertyNode ?? {}).filter((k) => k !== "column");
+  const siblings = siblingKeys.map((key) => ({
+    key,
+    preview: JSON.stringify(propertyNode[key]).slice(0, 300),
+  }));
+
+  return { columns, siblingKeys: siblings };
 }
 
 /**
