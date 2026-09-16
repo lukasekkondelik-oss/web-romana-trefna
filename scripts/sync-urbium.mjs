@@ -22,6 +22,15 @@ function contentHash(normalized) {
   return `sha256:${crypto.createHash("sha256").update(stable).digest("hex")}`;
 }
 
+// Urbium's real modification-date field name/format is still being
+// confirmed (see xml-schema.mjs) — never let an unparseable value here
+// crash the whole action, just fall back to "now".
+function safeIsoDate(rawValue, fallbackIso) {
+  if (!rawValue) return fallbackIso;
+  const parsed = new Date(rawValue);
+  return Number.isNaN(parsed.getTime()) ? fallbackIso : parsed.toISOString();
+}
+
 async function writePropertyPageFile(property) {
   const html = await renderPropertyPage(property);
   const filePath = path.join(process.cwd(), property.pageFile);
@@ -55,7 +64,7 @@ async function processInsertOrUpdate(state, action) {
     ourStatus: "active",
     urbiumStatusRaw: normalized.urbiumStatusRaw,
     urbiumLastModifiedRaw: normalized.urbiumLastModifiedRaw,
-    urbiumLastModified: normalized.urbiumLastModifiedRaw ? new Date(normalized.urbiumLastModifiedRaw).toISOString() : now,
+    urbiumLastModified: safeIsoDate(normalized.urbiumLastModifiedRaw, now),
     firstSeenAt: existing?.firstSeenAt ?? now,
     lastSeenInListAt: now,
     ourLastSyncedAt: now,
