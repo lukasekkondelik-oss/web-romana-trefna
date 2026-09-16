@@ -31,9 +31,16 @@ function text(value) {
   return String(value).trim();
 }
 
-// Urbium's timestamps come as "YYYY-MM-DD HH:mm:ss" (space, not ISO's "T").
+// The list endpoint sends "YYYY-MM-DD HH:mm:ss" (space, not ISO's "T"); the
+// detail endpoint sends Czech-style "DD.MM.YYYY HH:mm" instead. Normalize
+// both to something `new Date()` can actually parse.
 function normalizeTimestamp(raw) {
   if (!raw) return null;
+  const czechMatch = /^(\d{2})\.(\d{2})\.(\d{4})\s+(\d{2}:\d{2}(?::\d{2})?)$/.exec(raw);
+  if (czechMatch) {
+    const [, day, month, year, time] = czechMatch;
+    return `${year}-${month}-${day}T${time}`;
+  }
   return raw.includes("T") ? raw : raw.replace(" ", "T");
 }
 
@@ -88,7 +95,9 @@ function extractUrlLike(item, depth = 0) {
     return /^https?:\/\//i.test(trimmed) ? trimmed : undefined;
   }
   if (depth > 3 || !item || typeof item !== "object") return undefined;
-  const candidate = item.url ?? item["@_url"] ?? item["#text"] ?? item.src ?? item.velky ?? item.original ?? item.big;
+  // "photo_url" confirmed from the real feed (images.photo[].photo_url).
+  const candidate =
+    item.photo_url ?? item.url ?? item["@_url"] ?? item["#text"] ?? item.src ?? item.velky ?? item.original ?? item.big;
   return extractUrlLike(candidate, depth + 1);
 }
 
@@ -190,9 +199,11 @@ export function mapDetailEntry(parsedDoc, knownPropertyId) {
   // "popisz" (title) and "popis" (description) confirmed from the real feed.
   const title = field("popisz", "nazev", "title", "name", "predmet") || "Nemovitost";
   const description = field("popis", "description", "text") || "";
-  const location = field("lokalita", "obec", "mesto", "location", "city") || "";
-  const address = field("adresa", "ulice", "address", "street") || location;
-  const areaRaw = field("plocha", "uzitna_plocha", "plocha_uzitna", "area", "usable_area");
+  // "obec_nazev" (Obec) and "google_adresa"/"user_address" (Přesná/Zobrazená
+  // adresa) confirmed from the real feed.
+  const location = field("obec_nazev", "momc_nazev", "cobce_nazev", "lokalita", "obec", "mesto", "location", "city") || "";
+  const address = field("google_adresa", "user_address", "adresa", "ulice_nazev", "ulice", "address", "street") || location;
+  const areaRaw = field("plocha_uzitna", "plocha", "uzitna_plocha", "area", "usable_area");
   const area = areaRaw ? Number(String(areaRaw).replace(/[^\d.]/g, "")) || null : null;
   const layout = field("dispozice", "layout", "disposition") || "";
   // "typ_nemovitosti_u" (refined type, e.g. "Rodinný dům") confirmed from the real feed.
