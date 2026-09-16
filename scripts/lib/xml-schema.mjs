@@ -197,7 +197,7 @@ export function mapDetailEntry(parsedDoc, knownPropertyId) {
   );
 
   // "popisz" (title) and "popis" (description) confirmed from the real feed.
-  const title = field("popisz", "nazev", "title", "name", "predmet") || "Nemovitost";
+  const title = (field("popisz", "nazev", "title", "name", "predmet") || "Nemovitost").replace(/\s+/g, " ").trim();
   const description = field("popis", "description", "text") || "";
   // "obec_nazev" (Obec) and "google_adresa"/"user_address" (Přesná/Zobrazená
   // adresa) confirmed from the real feed.
