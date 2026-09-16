@@ -86,7 +86,7 @@ jobs:
       - name: Commit and push directly to main
         if: steps.changes.outputs.changed == 'true' && inputs.mode != 'pr'
         run: |
-          git add data/urbium-properties.json images/nemovitosti index.html sitemap.xml nemovitost-*.html
+          git add -A -- data sitemap.xml index.html css 'nemovitost-*.html' images
           git commit -m "${{ steps.summary.outputs.message }}"
           git push
 
@@ -101,9 +101,3 @@ jobs:
             Automated Urbium sync run in review mode. Please check the generated
             property page(s), downloaded images, and the index.html/sitemap.xml
             diffs before merging.
-          add-paths: |
-            data/urbium-properties.json
-            images/nemovitosti
-            index.html
-            sitemap.xml
-            nemovitost-*.html

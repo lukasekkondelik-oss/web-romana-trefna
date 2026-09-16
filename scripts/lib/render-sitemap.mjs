@@ -12,7 +12,7 @@ function urlEntry(property) {
 export async function renderSitemapUrls(state) {
   const active = Object.values(state.properties).filter((p) => p.ourStatus === "active");
 
-  const block = active.length ? `\n${active.map(urlEntry).join("\n")}\n\n  ` : "\n\n  ";
+  const block = active.length ? `\n${active.map(urlEntry).join("\n")}\n\n  ` : "\n  ";
 
   const xml = await fs.readFile(SITEMAP_XML, "utf8");
   const startIdx = xml.indexOf(SITEMAP_MARKER_START);
