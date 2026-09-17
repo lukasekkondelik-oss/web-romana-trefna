@@ -1,28 +1,27 @@
 name: Urbium sync
 
-# Rollout note: the schedule trigger is intentionally left commented out
-# below. Run this workflow manually (workflow_dispatch) against the real
-# Urbium feed first, verify scripts/lib/xml-schema.mjs maps the real XML
-# fields correctly (see docs/urbium-sync.md), and do at least one run with
-# mode=pr reviewed by a human before enabling the schedule.
+# Schema confirmed against the real feed and verified end-to-end via a
+# human-reviewed PR (see docs/urbium-sync.md) — now runs automatically 3x/day
+# and commits straight to main. workflow_dispatch stays available for manual
+# re-runs, forced backfills, or recovery after an Urbium outage.
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "direct = commit straight to main, pr = open a pull request for review (default while schema is still being confirmed)"
+        description: "direct = commit straight to main, pr = open a pull request for review"
         required: false
-        default: "pr"
+        default: "direct"
         type: choice
         options:
           - direct
           - pr
       debug_schema:
-        description: "Log the first raw list/detail entry (for verifying Urbium's XML field names) — defaults on while schema is still being confirmed"
+        description: "Log the first raw list/detail entry (for verifying Urbium's XML field names)"
         required: false
-        default: true
+        default: false
         type: boolean
-  # schedule:
-  #   - cron: "0 6,12,18 * * *"
+  schedule:
+    - cron: "0 6,12,18 * * *"
 
 concurrency:
   group: urbium-sync
