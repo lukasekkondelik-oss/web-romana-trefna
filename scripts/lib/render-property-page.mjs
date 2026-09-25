@@ -70,13 +70,13 @@ function buildJsonLd(property) {
 
 const STATUS_LABELS = {
   active: "V nabídce",
-  hidden: "Již není v nabídce",
+  realized: "Realizováno",
   sold: "Prodáno",
 };
 
 const STATUS_BADGE_MODIFIERS = {
   active: "",
-  hidden: " is-sold",
+  realized: " is-sold",
   sold: " is-sold",
 };
 
