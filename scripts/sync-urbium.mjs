@@ -10,6 +10,7 @@ import { generateSlugAndPaths } from "./lib/slug.mjs";
 import { syncPropertyImages } from "./lib/images.mjs";
 import { renderPropertyPage } from "./lib/render-property-page.mjs";
 import { renderIndexListings } from "./lib/render-index.mjs";
+import { renderRealizedListings } from "./lib/render-realized.mjs";
 import { renderSitemapUrls } from "./lib/render-sitemap.mjs";
 import { MAX_ACTIONS_PER_RUN, DETAIL_CALL_DELAY_MS, DETAIL_CALL_JITTER_MS, FAILURE_ABORT_THRESHOLD } from "./config.mjs";
 
@@ -94,9 +95,9 @@ async function processInsertOrUpdate(state, action) {
 async function processDeactivate(state, action) {
   const existing = state.properties[action.propertyId];
   if (!existing) return;
-  existing.ourStatus = "hidden";
+  existing.ourStatus = "realized";
   await writePropertyPageFile(existing);
-  console.log(`Deactivated property ${action.propertyId} (${existing.title}) — flagged hidden, kept for history`);
+  console.log(`Deactivated property ${action.propertyId} (${existing.title}) — flagged realized, kept for history`);
 }
 
 async function run() {
@@ -174,6 +175,9 @@ async function run() {
   console.log("Regenerating homepage listings block…");
   const indexChanged = await renderIndexListings(state);
 
+  console.log("Regenerating realized-listings section…");
+  const realizedChanged = await renderRealizedListings(state);
+
   console.log("Regenerating sitemap block…");
   const sitemapChanged = await renderSitemapUrls(state);
 
@@ -181,7 +185,7 @@ async function run() {
 
   console.log(
     `Sync run complete. Processed ${processedIds.size}/${batch.length} queued actions. ` +
-      `index.html ${indexChanged ? "changed" : "unchanged"}, sitemap.xml ${sitemapChanged ? "changed" : "unchanged"}.`
+      `index.html ${indexChanged || realizedChanged ? "changed" : "unchanged"}, sitemap.xml ${sitemapChanged ? "changed" : "unchanged"}.`
   );
 }
 
