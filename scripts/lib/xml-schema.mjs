@@ -22,13 +22,37 @@ function pick(obj, candidates) {
   return undefined;
 }
 
+// Urbium's plain-text fields (description in particular) embed HTML
+// entities (e.g. "137 m&sup2;") rather than real characters — decode them
+// here so stored/rendered text shows "m²", not the literal entity text
+// (our own HTML-escaping of "&" would otherwise turn it into "&amp;sup2;",
+// which displays as "m&sup2;" verbatim).
+const NAMED_ENTITIES = {
+  amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ",
+  sup1: "¹", sup2: "²", sup3: "³",
+  ndash: "–", mdash: "—", hellip: "…",
+  lsquo: "‘", rsquo: "’", ldquo: "“", rdquo: "”",
+  deg: "°", times: "×",
+};
+
+export function decodeHtmlEntities(str) {
+  if (!str) return str;
+  return str.replace(/&(#x[0-9a-fA-F]+|#\d+|[a-zA-Z][a-zA-Z0-9]*);/g, (match, entity) => {
+    if (entity[0] === "#") {
+      const code = entity[1] === "x" || entity[1] === "X" ? parseInt(entity.slice(2), 16) : parseInt(entity.slice(1), 10);
+      return Number.isNaN(code) ? match : String.fromCodePoint(code);
+    }
+    return NAMED_ENTITIES[entity] ?? match;
+  });
+}
+
 function text(value) {
   if (value === undefined || value === null) return undefined;
   if (typeof value === "object") {
-    if ("@_description" in value) return String(value["@_description"]).trim();
-    if ("#text" in value) return String(value["#text"]).trim();
+    if ("@_description" in value) return decodeHtmlEntities(String(value["@_description"]).trim());
+    if ("#text" in value) return decodeHtmlEntities(String(value["#text"]).trim());
   }
-  return String(value).trim();
+  return decodeHtmlEntities(String(value).trim());
 }
 
 // The list endpoint sends "YYYY-MM-DD HH:mm:ss" (space, not ISO's "T"); the

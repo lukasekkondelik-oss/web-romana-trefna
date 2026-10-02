@@ -109,7 +109,8 @@
       </div>
 
       <div class="property-photo">
-        <img src="{{PHOTO_SRC}}" alt="{{PHOTO_ALT}}" width="1024" height="768" loading="lazy" />
+        <img src="{{PHOTO_SRC}}" alt="{{PHOTO_ALT}}" width="1024" height="768" loading="lazy" id="propertyMainPhoto" />
+{{THUMBNAILS}}
       </div>
     </div>
 
@@ -125,6 +126,14 @@
     </div>
   </div>
 </main>
+
+<div class="lightbox" id="propertyLightbox" hidden>
+  <button class="lightbox__close" id="lightboxClose" aria-label="Zavřít">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Předchozí fotka">&lsaquo;</button>
+  <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+  <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Další fotka">&rsaquo;</button>
+  <span class="lightbox__counter" id="lightboxCounter"></span>
+</div>
 
 <footer class="site-footer">
   <div class="container">
@@ -143,6 +152,48 @@ document.getElementById("navToggle")?.addEventListener("click", function () {
   var nav = document.getElementById("mainNav");
   var open = nav.classList.toggle("is-open");
   this.setAttribute("aria-expanded", open ? "true" : "false");
-});</script>
+});
+
+(function () {
+  var photos = {{PHOTOS_JSON}};
+  if (!photos.length) return;
+
+  var lightbox = document.getElementById("propertyLightbox");
+  var img = document.getElementById("lightboxImg");
+  var counter = document.getElementById("lightboxCounter");
+  var current = 0;
+
+  function show(index) {
+    current = (index + photos.length) % photos.length;
+    img.src = photos[current].src;
+    img.alt = photos[current].alt;
+    counter.textContent = (current + 1) + " / " + photos.length;
+  }
+  function openLightbox(index) {
+    show(index);
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox() {
+    lightbox.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  document.getElementById("propertyMainPhoto")?.addEventListener("click", function () { openLightbox(0); });
+  document.querySelectorAll(".property-thumb").forEach(function (btn, i) {
+    btn.addEventListener("click", function () { openLightbox(i); });
+  });
+  document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+  document.getElementById("lightboxPrev").addEventListener("click", function () { show(current - 1); });
+  document.getElementById("lightboxNext").addEventListener("click", function () { show(current + 1); });
+  lightbox.addEventListener("click", function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", function (e) {
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") show(current - 1);
+    if (e.key === "ArrowRight") show(current + 1);
+  });
+})();
+</script>
 </body>
 </html>
