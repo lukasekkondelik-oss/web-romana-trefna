@@ -68,6 +68,26 @@ function buildJsonLd(property) {
   return JSON.stringify(jsonLd, null, 2);
 }
 
+function thumbnailsHtml(images) {
+  if (images.length <= 1) return "";
+  const thumbs = images
+    .map(
+      (img, i) =>
+        `          <button class="property-thumb${i === 0 ? " is-active" : ""}" type="button" aria-label="Fotka ${i + 1} z ${images.length}">
+            <img src="${img.localPath}" alt="" width="200" height="150" loading="lazy" />
+          </button>`
+    )
+    .join("\n");
+  return `        <div class="property-thumbs">\n${thumbs}\n        </div>\n`;
+}
+
+// Guards against a stray "</script>" in title text breaking out of the
+// inline <script> block this gets embedded into.
+function photosJson(images, title) {
+  const photos = images.map((img) => ({ src: img.localPath, alt: title }));
+  return JSON.stringify(photos).replace(/<\/script/gi, "<\\/script");
+}
+
 const STATUS_LABELS = {
   active: "V nabídce",
   realized: "Realizováno",
@@ -111,6 +131,8 @@ export async function renderPropertyPage(property) {
     ),
     PHOTO_SRC: photo ? photo.localPath : PLACEHOLDER_IMAGE,
     PHOTO_ALT: escapeHtml(property.title),
+    THUMBNAILS: thumbnailsHtml(property.images),
+    PHOTOS_JSON: photosJson(property.images, property.title),
     MAILTO_SUBJECT: encodeURIComponent(property.title),
   };
 
