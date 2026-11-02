@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "lastListFetchAt": "2026-09-16T14:53:57.586Z",
-  "lastSyncRunAt": "2026-09-16T14:57:07.705Z",
+  "lastListFetchAt": "2026-11-02T11:18:07.128Z",
+  "lastSyncRunAt": "2026-11-02T11:20:27.267Z",
   "properties": {
     "10078629": {
       "propertyId": "10078629",
@@ -10,13 +10,13 @@
       "url": "/nemovitost-rodinny-dum-6-1-s-terasou-a-zahradou-rozmital-pod-tremsinem-10078629.html",
       "ourStatus": "active",
       "urbiumStatusRaw": "Aktivní",
-      "urbiumLastModifiedRaw": "2026-09-10T11:06",
-      "urbiumLastModified": "2026-09-10T11:06:00.000Z",
+      "urbiumLastModifiedRaw": "2026-10-30T15:39",
+      "urbiumLastModified": "2026-10-30T15:39:00.000Z",
       "firstSeenAt": "2026-09-16T14:53:58.758Z",
-      "lastSeenInListAt": "2026-09-16T14:53:58.758Z",
-      "ourLastSyncedAt": "2026-09-16T14:53:58.758Z",
-      "contentHash": "sha256:62d62ca321344a4c0f349f2ec3826ab4d410a07e4a30058ecdcf969735e08696",
-      "title": "Rodinný dům 6+1 s terasou a zahradou  Rožmitál pod Třemšínem",
+      "lastSeenInListAt": "2026-11-02T11:18:10.283Z",
+      "ourLastSyncedAt": "2026-11-02T11:18:10.283Z",
+      "contentHash": "sha256:5d3d1ad59a40e630e3098cc246ff6ed03e25b54f1cd2c6ce48fad3c0abdfef23",
+      "title": "Rodinný dům 6+1 s terasou a zahradou Rožmitál pod Třemšínem",
       "price": 6790000,
       "priceDisplay": "6 790 000 Kč",
       "location": "Rožmitál pod Třemšínem",
@@ -27,104 +27,84 @@
       "description": "Hledáte rodinný dům, kde za posledními domy v ulici začínají louky a lesy?\n\nNabízím k prodeji řadový rodinný dům o dispozici 6+1 v klidné části Rožmitálu pod Třemšínem, v ulici U Stromovky. Dům se nachází v slepé ulici na samém okraji zástavby, kde již navazují louky a lesy Brd, což vytváří jedinečnou atmosféru bydlení v blízkosti přírody. Jedná se o dvoupodlažní dřevostavbu typu OKAL, kolaudovanou v roce 1990, s užitnou plochou 137 m², stojící na pozemku o velikosti 265m².\n\nDispozice domu je velmi praktická. V přízemí se nachází vstupní část s předsíní a halou, koupelna se sprchovým koutem, WC a tři samostatné místnosti. Jedna z nich vznikla úpravou původní garáže a dnes slouží jako plnohodnotný obytný prostor. Přízemí tak nabízí variabilní využití například jako pracovna, pokoj pro hosty, zázemí pro podnikání nebo oddělená část pro vícegenerační bydlení.\n\nV patře se nachází hlavní obytná část domu. Obývací pokoj působí příjemně a útulně a nabízí dostatek prostoru pro každodenní život i odpočinek. Kuchyně je řešena samostatně. Dále jsou zde ložnice, dětský pokoj a koupelna.\nSoučástí domu je terasa a navazující zahrada, která poskytuje ideální prostor pro relaxaci, posezení s rodinou nebo přáteli. Díky poloze na okraji zástavby si zde můžete užívat klid a soukromí.\n\nPřibližně před 15 lety prošel dům modernizací, která zahrnovala zateplení fasády, výměnu oken a vstupních dveří za plastová, úpravu elektroinstalace a rozvodů vody a odpadů v plastu. Plastové jsou také dveře vedoucí na terasu v zadní části domu. Dům je napojen na obecní vodovod a kanalizaci.\nVytápění je zajištěno kotlem na tuhá paliva (uhlí a dřevo) a ohřev vody řeší kombinovaný bojler, který umožňuje ohřev jak při vytápění, tak elektricky.\n\nVýhodou je také možnost přikoupit sousední pozemek.\n\nRožmitál pod Třemšínem nabízí kompletní občanskou vybavenost  školu, školku, lékaře, obchody i restaurace. Pro volný čas je k dispozici řada dětských hřišť, knihovna, muzeum nebo kino. Lokalita je zároveň atraktivní díky bezprostřední blízkosti Brd, které nabízejí množství turistických a cyklistických tras, a zároveň dobrou dostupnost do Prahy.\n\nIdeální místo pro rodinný život  klidná slepá ulice, zahrada, dostatek prostoru a příroda doslova za plotem.\n\nPro více informací nebo domluvení prohlídky mě neváhejte kontaktovat.",
       "images": [
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1781707349_DzFRPAQlp8.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370088_D9rXg2bJtB.jpg",
           "localPath": "images/nemovitosti/10078629/01.jpg",
-          "hash": "sha256:db41c42baeb50143cfc22bd41a4c6d21db60293933f7f56b6796a8c7e9bd51b3"
+          "hash": "sha256:d6d476323de09c9a850967b31571fdb1343c13867f2ff6e378dd7bc9ed0b2d66"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1781707350_867LSeN2lC.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370089_G5f10KULJq.jpg",
           "localPath": "images/nemovitosti/10078629/02.jpg",
-          "hash": "sha256:2cc9da7e27f00e63e971a035ce60b3d0d514650cb93719d1102df1ec26f945ca"
+          "hash": "sha256:ea6b74ffe46d7f827fb8e218915b4de1d0e074c2006b9fd91d223697cde5f672"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1781707349_OVUXEDq3Ba.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370088_ufD8L6g2Zy.jpg",
           "localPath": "images/nemovitosti/10078629/03.jpg",
-          "hash": "sha256:d9d62a8d5fd59149abbdcd486f215d1e03a418b4c92057060473880a49c1eaa1"
+          "hash": "sha256:73669a2ba3282c0659a78a21b2e8f4bf95875dd0644560ee1dc8446be15f6a31"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1789031129_Yi58jGAK0t.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370089_ZSTrJHvfD8.jpg",
           "localPath": "images/nemovitosti/10078629/04.jpg",
-          "hash": "sha256:d6162300ae2ea9493d9b54162a059961c77d67ae5e2c4135dd537777c4ca49a9"
+          "hash": "sha256:f9203fef31db6ceec51e1cc4dc4a296ef04432b249fe7cabe84c4c0e9e48b166"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518283.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370090_VsvBq9UWNY.jpg",
           "localPath": "images/nemovitosti/10078629/05.jpg",
-          "hash": "sha256:c65e36225ef75fc56f6d64e4aab385318c9eba596a0313619974d4097d33d2b0"
+          "hash": "sha256:0492171c7820b40f17f509f6ff2aa45ed0cc1ee5cdd878a2bf6974983a17dfbe"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518284.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370226_GdP5T8rUfm.jpg",
           "localPath": "images/nemovitosti/10078629/06.jpg",
-          "hash": "sha256:e60ab5a372b9e30d7c0cd02b6d4968d6381093e1331af005a2512e2e278cede8"
+          "hash": "sha256:89be517fafab1daa8f400302e7de255734fad549844cef1a0f00009328c9f90a"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518285.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793371140_oGrXu8x2IU.jpg",
           "localPath": "images/nemovitosti/10078629/07.jpg",
-          "hash": "sha256:b956b85ffe9229cebf2370dcb18f9044431d5e192d4841e2dcfded4c0427deba"
+          "hash": "sha256:f336d7c3164d9542e233ca31ff59f70b10b22742ef641c524b6f79b81b2717f3"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518286.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370090_S7NWIGQTK2.jpg",
           "localPath": "images/nemovitosti/10078629/08.jpg",
-          "hash": "sha256:51542981877032d0e4bfc6d92ee6f295e0c3f854fb93a99e8507b1e6d39d189c"
+          "hash": "sha256:854545e042c04453bd6b7a1f2947608606999d49d2e8e1bcc92aa93720e5f2f2"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518287.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370087_3N0OLC6mKj.jpg",
           "localPath": "images/nemovitosti/10078629/09.jpg",
-          "hash": "sha256:68bb71ac61850aa24f4821ffa05f5cfb9356921cbf826400122e33baaa4707a4"
+          "hash": "sha256:ec70c9ee520a57cd4abb1a136656660cc4f87b7353982c776e73ebae7b70c9d6"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518288.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370092_4kNIy6D0tH.jpg",
           "localPath": "images/nemovitosti/10078629/10.jpg",
-          "hash": "sha256:75be47f50934f5f6ca3a49483a9720da6badfa97d702e5d174c924312b4bb9b0"
+          "hash": "sha256:826f5acf00e480d8b154a697dbdd0a2cd0d699174fa275ab5b30f9779e5d399a"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518289.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370093_KJcV8plO0H.jpg",
           "localPath": "images/nemovitosti/10078629/11.jpg",
-          "hash": "sha256:4672a4f995eb52c9dc5e2d164a934d78697013d062f5dffe7d8547ee3d62c7ec"
+          "hash": "sha256:f7ea67a2f168a45b9633f66bafe44bf9e8f5318c31eb8d293af9a78bd6f0a1c4"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518290.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370982_Rpfl7eArWw.jpg",
           "localPath": "images/nemovitosti/10078629/12.jpg",
-          "hash": "sha256:b452de4a34bfd2064d5c25c4f703ff829ba5352c19035b3c557887443b532e79"
+          "hash": "sha256:73d67875b8f1aed8388e43f921e8b7d7013761cd9756f2e5eaa01b413613a015"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518293.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793371034_xVEsGugp8H.jpg",
           "localPath": "images/nemovitosti/10078629/13.jpg",
-          "hash": "sha256:3356bbb4b1c1ce1e882f2798a53cf43a925a0bed68eacf32c87bb0ca819c4387"
+          "hash": "sha256:cbcd69fb24ea40a39e5d1901101f5209e1055d5da5cee69f7395607fef077639"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/10078629_167518294.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370092_wCJ3rcN2Wv.jpg",
           "localPath": "images/nemovitosti/10078629/14.jpg",
-          "hash": "sha256:ff3b3b14529deaa212bceeaec79c072df80d819f11b53bf0b9e305df865b5a12"
+          "hash": "sha256:50a48dbc206ec5e66b29ab7d694899306a542886e9abc5b343e66ceb98141a1d"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1777890220_5kKIDw80Ly.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370951_EHClayF6q5.jpg",
           "localPath": "images/nemovitosti/10078629/15.jpg",
-          "hash": "sha256:1dfbaeb75dd873d122b90ad5853ec01cfdc6fe8bd5c3ba1dadc2da2a8c8d0924"
+          "hash": "sha256:c8b0815437787acdef7b5035c60b6b9e4c3aa04cdea63e7a0c83d5d920141bec"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1777890221_fNcjsFXAEz.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1793370930_ThDIqafuyA.jpg",
           "localPath": "images/nemovitosti/10078629/16.jpg",
-          "hash": "sha256:2bfb05c68cb7fa59cb448e123352ecce9842864f0c1399a33a26c4208687341f"
-        },
-        {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1777890221_nLHyvWYfbI.jpg",
-          "localPath": "images/nemovitosti/10078629/17.jpg",
-          "hash": "sha256:f65dfb37660877c4aa6b887a30cef22a56198ac65c56a9aba8962cf6caf6952d"
-        },
-        {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1781707349_mfzTaO6lv1.jpg",
-          "localPath": "images/nemovitosti/10078629/18.jpg",
-          "hash": "sha256:18f16abcf3ed4878ec072f0818a938776342b45fdb45c87cd91b338244a0cff1"
-        },
-        {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1781707349_ItcNH2Z6ba.jpg",
-          "localPath": "images/nemovitosti/10078629/19.jpg",
-          "hash": "sha256:4f03710dd463eefe4c8692d4b4f58a7d41249f62cdf69b8606a9e8bd12a24fad"
-        },
-        {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10078629/1781707350_OSwr4aHs3J.jpg",
-          "localPath": "images/nemovitosti/10078629/20.jpg",
-          "hash": "sha256:bf6c9c48ca1bcad7c45c5136b6baf4434f16cb4024abff7e1ff1077005aec905"
+          "hash": "sha256:125ca8e39ca1901f52972d6020be99a15399cf1b8599d2e38ec00c59728a0b93"
         }
       ],
       "videos": []
@@ -136,21 +116,21 @@
       "url": "/nemovitost-rodinny-dum-s-profesionalni-dilnou-idealni-pro-podnikani-10080378.html",
       "ourStatus": "active",
       "urbiumStatusRaw": "Aktivní",
-      "urbiumLastModifiedRaw": "2026-09-10T09:37",
-      "urbiumLastModified": "2026-09-10T09:37:00.000Z",
+      "urbiumLastModifiedRaw": "2026-10-16T09:05",
+      "urbiumLastModified": "2026-10-16T09:05:00.000Z",
       "firstSeenAt": "2026-09-16T14:54:53.439Z",
-      "lastSeenInListAt": "2026-09-16T14:54:53.439Z",
-      "ourLastSyncedAt": "2026-09-16T14:54:53.439Z",
-      "contentHash": "sha256:1551037fd739a9ec114c7c4f09fafca527d31f31bc54ad9ed9eda99ef27cabae",
+      "lastSeenInListAt": "2026-11-02T11:19:21.606Z",
+      "ourLastSyncedAt": "2026-11-02T11:19:21.606Z",
+      "contentHash": "sha256:e83e583472fa2303e9fd9886acbe4dc80d416f0f698811b2ff008e82080ad127",
       "title": "Rodinný dům s profesionální dílnou. Ideální pro podnikání, řemeslo i pohodlné rodinné bydlení",
       "price": 10489000,
       "priceDisplay": "10 489 000 Kč",
       "location": "Věšín",
-      "address": "Věšín, Příbram",
+      "address": "č.p. 193, 26243 Rožmitál pod Třemšínem",
       "area": 220,
       "layout": "",
       "propertyType": "Rodinný dům",
-      "description": "Hledáte místo, kde můžete bydlet a zároveň podnikat, aniž byste museli dojíždět do pronajatých prostor? Ve Věšíně na úpatí Brd nabízím nemovitost, která spojuje komfort rodinného domu s kvalitním pracovním zázemím.\n\nRodinný dům o dispozici 5+1 s celkovou plochou 220 m² stojí na pozemku o výměře 1 711 m² plus samostatně stojící zděná dílna o velikosti 55 m², která svou vybaveností výrazně převyšuje běžné garáže nebo hobby dílny.\n\nDům je řešen jako třípodlažní. V hlavním obytném podlaží se nachází kuchyně s jídelnou, obývací pokoj se vstupem na terasu a zahradu, koupelna, samostatné WC a spíž. V podkroví jsou tři samostatné pokoje, koupelna, WC a praktické úložné prostory. Prostorný suterén nabízí garáž, technické zázemí, prádelnu, společenskou místnost i další skladovací prostory.\n\nNejvětší předností této nemovitosti je samostatná zděná dílna o výměře 55 m². Díky výšce stropu 3,1 m a vratům o rozměrech 3 × 2,8 m do ní pohodlně vjede i traktor nebo větší pracovní technika. Dílna je vybavena šesti zásuvkami na 380 V, stropním zářivkovým osvětlením a rozvodem stlačeného vzduchu s vývody na rychlospojky. Dílna disponuje hlavními vjezdovými vraty a navíc i menšími bočními vraty.\n\nCelý areál je navržen s důrazem na praktičnost. Příjezdové komunikace i manipulační plochy kolem domu a dílny jsou kvalitně zpevněné s vysokou nosností, takže bez problémů zvládnou provoz dodávek, traktorů, přívěsů i další techniky. Na pozemku se navíc nachází ještě menší truhlářská dílna a prostor připravený pro vybudování pergoly nebo dalšího venkovního zázemí.\n\nNemovitost ocení především řemeslníci, stavební firmy, truhláři, automechanici, zemědělci, servisní technici i podnikatelé, kteří chtějí mít své zázemí přímo u domu. Stejně dobře ale poslouží i rodině, která hledá prostorné bydlení s velkou zahradou a možností věnovat se svým koníčkům.\n\nVěšín je vyhledávanou obcí na úpatí Brd. Nabízí klidné bydlení v krásné přírodě s výbornými podmínkami pro turistiku, cyklistiku, běžecké lyžování i houbaření. V obci je mateřská škola a malotřídní základní škola, kompletní občanskou vybavenost najdete v Rožmitále pod Třemšínem, vzdáleném přibližně 3 km.\n\nPokud hledáte nemovitost, která Vám umožní pohodlně bydlet, podnikat a mít vše na jednom místě, doporučuji osobní prohlídku. Takových nabídek je na trhu jen minimum.",
+      "description": "Rezervováno\n\nHledáte místo, kde můžete bydlet a zároveň podnikat, aniž byste museli dojíždět do pronajatých prostor? Ve Věšíně na úpatí Brd nabízím nemovitost, která spojuje komfort rodinného domu s kvalitním pracovním zázemím.\n\nRodinný dům o dispozici 5+1 s celkovou plochou 220 m² stojí na pozemku o výměře 1 711 m² plus samostatně stojící zděná dílna o velikosti 55 m², která svou vybaveností výrazně převyšuje běžné garáže nebo hobby dílny.\n\nDům je řešen jako třípodlažní. V hlavním obytném podlaží se nachází kuchyně s jídelnou, obývací pokoj se vstupem na terasu a zahradu, koupelna, samostatné WC a spíž. V podkroví jsou tři samostatné pokoje, koupelna, WC a praktické úložné prostory. Prostorný suterén nabízí garáž, technické zázemí, prádelnu, společenskou místnost i další skladovací prostory.\n\nNejvětší předností této nemovitosti je samostatná zděná dílna o výměře 55 m². Díky výšce stropu 3,1 m a vratům o rozměrech 3 × 2,8 m do ní pohodlně vjede i traktor nebo větší pracovní technika. Dílna je vybavena šesti zásuvkami na 380 V, stropním zářivkovým osvětlením a rozvodem stlačeného vzduchu s vývody na rychlospojky. Dílna disponuje hlavními vjezdovými vraty a navíc i menšími bočními vraty.\n\nCelý areál je navržen s důrazem na praktičnost. Příjezdové komunikace i manipulační plochy kolem domu a dílny jsou kvalitně zpevněné s vysokou nosností, takže bez problémů zvládnou provoz dodávek, traktorů, přívěsů i další techniky. Na pozemku se navíc nachází ještě menší truhlářská dílna a prostor připravený pro vybudování pergoly nebo dalšího venkovního zázemí.\n\nNemovitost ocení především řemeslníci, stavební firmy, truhláři, automechanici, zemědělci, servisní technici i podnikatelé, kteří chtějí mít své zázemí přímo u domu. Stejně dobře ale poslouží i rodině, která hledá prostorné bydlení s velkou zahradou a možností věnovat se svým koníčkům.\n\nVěšín je vyhledávanou obcí na úpatí Brd. Nabízí klidné bydlení v krásné přírodě s výbornými podmínkami pro turistiku, cyklistiku, běžecké lyžování i houbaření. V obci je mateřská škola a malotřídní základní škola, kompletní občanskou vybavenost najdete v Rožmitále pod Třemšínem, vzdáleném přibližně 3 km.\n\nPokud hledáte nemovitost, která Vám umožní pohodlně bydlet, podnikat a mít vše na jednom místě, doporučuji osobní prohlídku. Takových nabídek je na trhu jen minimum.",
       "images": [
         {
           "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/1788171908_wRjylWboLX.jpg",
@@ -193,34 +173,19 @@
           "hash": "sha256:73fd1d6c51d1ab899094f8a426fc1eb9eb56ee0bc6250cf0b9c004daf42102f7"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/1788171903_HiRx0nOvMt.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/1790411927_IYeJZxyGPR.jpg",
           "localPath": "images/nemovitosti/10080378/09.jpg",
-          "hash": "sha256:3a3722cbd1a08dcf170259d8cd266baab15490a0c1ff722aede7be3c8d4d75fc"
+          "hash": "sha256:afee1427dfdbbfd590a3168706873ae37df92ca3c0e33c16510188bf2433c52d"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/10080378_167521996.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/1790411944_VZerAFfcp5.jpg",
           "localPath": "images/nemovitosti/10080378/10.jpg",
-          "hash": "sha256:793147952e7bca50c716f11f947f462bfe70c1c54520887cc7e4020fa89ce874"
+          "hash": "sha256:3c40bdaa0beac982ad34f25e6fde84fb210c88f85312a25bfaac3ac0f6c712a7"
         },
         {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/10080378_167521997.jpg",
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/1790411973_FdT1i7Rp2W.jpg",
           "localPath": "images/nemovitosti/10080378/11.jpg",
-          "hash": "sha256:d47cfed397aca0247b6ad9095c35bdb871537fbdb4f7ed79e52c4b9f72a51bb8"
-        },
-        {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/1778748296_FtRZ2SlceX.jpg",
-          "localPath": "images/nemovitosti/10080378/12.jpg",
-          "hash": "sha256:a906a7fb7d8d86a880d6cf87c89a66b4457ef4bdea3123693255abadf3909753"
-        },
-        {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/10080378_167521999.jpg",
-          "localPath": "images/nemovitosti/10080378/13.jpg",
-          "hash": "sha256:a943d32dbe03086110b65c6b36c0ee3243a83c46c1d984066f81f5a061ec8c2f"
-        },
-        {
-          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/10080378_167522000.jpg",
-          "localPath": "images/nemovitosti/10080378/14.jpg",
-          "hash": "sha256:63c5f2885e8dbd93bc720a9cdc8ed85358ee9e0ce11df6b733882efbb598fd3d"
+          "hash": "sha256:9ab0b8ebcfe00e44183eb7105d0c4c4099157d671c7db94b20ab9a383925c85e"
         },
         {
           "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/10080378_167522001.jpg",
@@ -313,6 +278,11 @@
           "hash": "sha256:d68151638f3835753bb5f9a3ac97f151ddc0c2b3276b8a6e5b1da259699e468d"
         },
         {
+          "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/1788171903_HiRx0nOvMt.jpg",
+          "localPath": "images/nemovitosti/10080378/09.jpg",
+          "hash": "sha256:3a3722cbd1a08dcf170259d8cd266baab15490a0c1ff722aede7be3c8d4d75fc"
+        },
+        {
           "sourceUrl": "https://www.eurobydleni.cz/rozhrani/uploads/company/6446/10080378/1778409719_zPySVFlmQp.jpg",
           "localPath": "images/nemovitosti/10080378/33.jpg",
           "hash": "sha256:1ba4967c4344cd963e4a70c1aecd8ee64490f25d9c9a89cef907cc7d56cb6b78"
@@ -345,9 +315,9 @@
       "urbiumLastModifiedRaw": "2026-07-01T11:31",
       "urbiumLastModified": "2026-07-01T11:31:00.000Z",
       "firstSeenAt": "2026-09-16T14:55:56.589Z",
-      "lastSeenInListAt": "2026-09-16T14:55:56.589Z",
-      "ourLastSyncedAt": "2026-09-16T14:55:56.589Z",
-      "contentHash": "sha256:93ad4d810ad7488b195c1260ece1c28fe8201962e3cb4c1a3c94c5ba92a8f121",
+      "lastSeenInListAt": "2026-11-02T11:20:26.560Z",
+      "ourLastSyncedAt": "2026-11-02T11:20:26.560Z",
+      "contentHash": "sha256:1da8bd1985c02b1aad31b04ef4e91cf618b75f3bbb16100f3733c00c28ea4c2c",
       "title": "Investice i budoucí mezonet na Smíchově 168m2",
       "price": 29850000,
       "priceDisplay": "29 850 000 Kč",
@@ -466,7 +436,7 @@
       "slug": "prodej-bytu-2-1-po-rekonstrukci-strakonice",
       "pageFile": "nemovitost-prodej-bytu-2-1-po-rekonstrukci-strakonice-10181785.html",
       "url": "/nemovitost-prodej-bytu-2-1-po-rekonstrukci-strakonice-10181785.html",
-      "ourStatus": "active",
+      "ourStatus": "realized",
       "urbiumStatusRaw": "Aktivní",
       "urbiumLastModifiedRaw": "2026-09-10T09:39",
       "urbiumLastModified": "2026-09-10T09:39:00.000Z",
