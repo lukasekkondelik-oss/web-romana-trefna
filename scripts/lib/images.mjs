@@ -28,19 +28,17 @@ async function downloadFile(url) {
 
 // Downloads any images referenced in `normalizedImages` that aren't already
 // present locally (matched by sourceUrl against `existingImages`), and
-// prunes local files for sourceUrls no longer present in the new payload.
+// prunes local files no longer referenced by the result.
 // Returns the new `images` array to store in state for this property.
 export async function syncPropertyImages(propertyId, normalizedImages, existingImages = []) {
   const dir = path.join(IMAGES_DIR, propertyId);
   await fs.mkdir(dir, { recursive: true });
 
   const existingByUrl = new Map(existingImages.map((img) => [img.sourceUrl, img]));
-  const keptUrls = new Set();
   const result = [];
 
   for (let i = 0; i < normalizedImages.length; i++) {
     const { sourceUrl } = normalizedImages[i];
-    keptUrls.add(sourceUrl);
     const already = existingByUrl.get(sourceUrl);
 
     if (already) {
@@ -66,10 +64,20 @@ export async function syncPropertyImages(propertyId, normalizedImages, existingI
     }
   }
 
-  // Prune local files whose sourceUrl is no longer referenced.
-  for (const old of existingImages) {
-    if (!keptUrls.has(old.sourceUrl)) {
-      await fs.rm(path.join(process.cwd(), old.localPath), { force: true });
+  // Prune stray files from the directory itself (by filename actually on
+  // disk), not by iterating the OLD state's recorded localPaths. Urbium
+  // reissues a fresh URL for a photo whenever a listing is edited, even for
+  // visually unchanged photos, so new downloads above are written under the
+  // same position-based filenames (01.jpg, 02.jpg, ...) old images used.
+  // Deleting "by old record" would delete the file a new photo was just
+  // written to, the moment that old record's (now-superseded) URL fell out
+  // of the new payload — which is exactly what wiped out this property's
+  // photos. Comparing against what's actually on disk avoids that race.
+  const keptFilenames = new Set(result.map((img) => path.basename(img.localPath)));
+  const dirEntries = await fs.readdir(dir).catch(() => []);
+  for (const filename of dirEntries) {
+    if (!keptFilenames.has(filename)) {
+      await fs.rm(path.join(dir, filename), { force: true });
     }
   }
 

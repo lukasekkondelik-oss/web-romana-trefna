@@ -613,5 +613,18 @@
       "videos": []
     }
   },
-  "pendingActions": []
+  "pendingActions": [
+    {
+      "propertyId": "10078629",
+      "action": "update",
+      "reason": "forced re-sync after image-prune bug fix",
+      "queuedAt": "2026-11-03T07:56:49.165Z"
+    },
+    {
+      "propertyId": "10080378",
+      "action": "update",
+      "reason": "forced re-sync after image-prune bug fix",
+      "queuedAt": "2026-11-03T07:56:49.165Z"
+    }
+  ]
 }
