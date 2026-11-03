@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "lastListFetchAt": "2026-11-02T11:18:07.128Z",
-  "lastSyncRunAt": "2026-11-02T11:20:27.267Z",
+  "lastListFetchAt": "2026-11-03T08:55:20.840Z",
+  "lastSyncRunAt": "2026-11-03T08:57:18.593Z",
   "properties": {
     "10078629": {
       "propertyId": "10078629",
@@ -13,8 +13,8 @@
       "urbiumLastModifiedRaw": "2026-10-30T15:39",
       "urbiumLastModified": "2026-10-30T15:39:00.000Z",
       "firstSeenAt": "2026-09-16T14:53:58.758Z",
-      "lastSeenInListAt": "2026-11-02T11:18:10.283Z",
-      "ourLastSyncedAt": "2026-11-02T11:18:10.283Z",
+      "lastSeenInListAt": "2026-11-03T08:55:22.244Z",
+      "ourLastSyncedAt": "2026-11-03T08:55:22.244Z",
       "contentHash": "sha256:5d3d1ad59a40e630e3098cc246ff6ed03e25b54f1cd2c6ce48fad3c0abdfef23",
       "title": "Rodinný dům 6+1 s terasou a zahradou Rožmitál pod Třemšínem",
       "price": 6790000,
@@ -119,8 +119,8 @@
       "urbiumLastModifiedRaw": "2026-10-16T09:05",
       "urbiumLastModified": "2026-10-16T09:05:00.000Z",
       "firstSeenAt": "2026-09-16T14:54:53.439Z",
-      "lastSeenInListAt": "2026-11-02T11:19:21.606Z",
-      "ourLastSyncedAt": "2026-11-02T11:19:21.606Z",
+      "lastSeenInListAt": "2026-11-03T08:56:16.622Z",
+      "ourLastSyncedAt": "2026-11-03T08:56:16.622Z",
       "contentHash": "sha256:e83e583472fa2303e9fd9886acbe4dc80d416f0f698811b2ff008e82080ad127",
       "title": "Rodinný dům s profesionální dílnou. Ideální pro podnikání, řemeslo i pohodlné rodinné bydlení",
       "price": 10489000,
@@ -315,8 +315,8 @@
       "urbiumLastModifiedRaw": "2026-07-01T11:31",
       "urbiumLastModified": "2026-07-01T11:31:00.000Z",
       "firstSeenAt": "2026-09-16T14:55:56.589Z",
-      "lastSeenInListAt": "2026-11-02T11:20:26.560Z",
-      "ourLastSyncedAt": "2026-11-02T11:20:26.560Z",
+      "lastSeenInListAt": "2026-11-03T08:57:17.710Z",
+      "ourLastSyncedAt": "2026-11-03T08:57:17.710Z",
       "contentHash": "sha256:1da8bd1985c02b1aad31b04ef4e91cf618b75f3bbb16100f3733c00c28ea4c2c",
       "title": "Investice i budoucí mezonet na Smíchově 168m2",
       "price": 29850000,
@@ -613,18 +613,5 @@
       "videos": []
     }
   },
-  "pendingActions": [
-    {
-      "propertyId": "10078629",
-      "action": "update",
-      "reason": "forced re-sync after image-prune bug fix",
-      "queuedAt": "2026-11-03T07:56:49.165Z"
-    },
-    {
-      "propertyId": "10080378",
-      "action": "update",
-      "reason": "forced re-sync after image-prune bug fix",
-      "queuedAt": "2026-11-03T07:56:49.165Z"
-    }
-  ]
+  "pendingActions": []
 }
