@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       quote: "„Realitní kancelář Romana Reality mi nabídla při prodeji mých několika pozemků ve Vimperku kvalifikovaný, spolehlivý odhad s možností prodeje, trpělivost, výbornou komunikaci, bezproblémovou spolupráci a naprosto profesionální přístup s nadstandardním lidským přístupem.“",
-      cite: "— Zdena P. · Prodej pozemků",
+      cite: "— Jiří P. · Prodej pozemků",
     },
     {
       quote: "„Paní Trefnou jednoznačně doporučuji! Můžete očekávat profesionální a současně milý a vstřícný přístup. Prodej bytu proběhl ukázkově. Dokumenty měla vždy precizně připravené a jednala se mnou na rovinu. Je to realitní makléřka na správném místě.“",
