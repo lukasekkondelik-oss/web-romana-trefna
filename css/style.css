@@ -1411,6 +1411,37 @@ h2.section-title {
   flex-wrap: wrap;
 }
 
+/* ---------- WhatsApp quick contact ---------- */
+.whatsapp-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  z-index: 90;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-fab:hover,
+.whatsapp-fab:focus-visible {
+  transform: scale(1.08);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.45);
+}
+
+@media (max-width: 560px) {
+  .whatsapp-fab {
+    right: 16px;
+    bottom: 90px;
+  }
+}
+
 .legal-page {
   padding: 64px 0 96px;
 }
